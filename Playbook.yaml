@@ -1,0 +1,17 @@
+- name: Play 2
+  hosts: localhost
+  tasks:
+    - name: Execute command "date"
+      command: date
+    - name: Update all packages
+      yum:
+        name: *
+        state: latest
+    - name: Install web server
+      yum:
+        name: httpd
+        state: present
+    - name: Start web server
+      service:
+        name: httpd
+        state: started
